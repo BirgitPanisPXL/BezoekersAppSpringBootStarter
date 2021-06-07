@@ -1,17 +1,30 @@
 package be.pxl.ja2.bezoekersapp.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+@Entity
 public class Bezoeker {
+	@Id
+	@GeneratedValue
+	// ID wordt automatisch gegenereerd > Staat standaard op "auto"
 	private Long id;
 	private String naam;
 	private String voornaam;
 	private String telefoonnummer;
 	private LocalTime tijdstip;
+	@OneToOne
+	// 1 patiënt krijgt 1 bezoeker
 	private Patient patient;
 	private LocalDateTime aanmelding;
+
+	public Bezoeker() {
+	}
 
 	public Long getId() {
 		return id;
